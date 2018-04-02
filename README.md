@@ -1,2 +1,2 @@
-# rubbish
-Rubbish code written due to FUCKING force majeure.
+# culturalfes
+:two_women_holding_hands: For Cultural Festival Website
