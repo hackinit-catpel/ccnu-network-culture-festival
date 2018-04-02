@@ -33,7 +33,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     ALLOWED_EXTENSIONS = ['zip', 'rar']
     MAX_CONTENT_LENGTH = 5 * 1024 * 1024
-    BUPLOAD_FOLDER = "/home/humbert/dev/culturalfes/culfes/upload"
+    BUPLOAD_FOLDER = "/home/humbert/rubbish/culturalfes/culfes/upload"
     #BUPLOAD_FOLDER = os.environ.get('BUPLOAD_FOLDER')
     REDIS_URL = "redis://:password@localhost:6379/0"
     CAPTCHA_ID = "b46d1900d0a894591916ea94ea91bd2c"

@@ -2,7 +2,7 @@
 {% block title %}文化节{% endblock %}
 {% block page_content %}
 	<div class="index_banner">
-		<img class="index_banner_img" src="/static/img/banner1.jpg">
+		<img class="index_banner_img" src="/static/img/banner1.png">
 	</div>
 	<div class="index_notice">
 		<div class="index_title">
@@ -47,7 +47,8 @@
 		<div class="index_tu_box">
 			{% for movie in movies %}
 			<div class="index_tu_content">
-				<div class="index_tu_img"><a href="{{ url_for('main.get_movie', id=movie.id) }}"><img src="{{ movie.upload_url }}"></a></div>
+				<div class="index_tu_img"><a href="{{ url_for('main.get_movie', id=movie.id) }}"><img src="http://ohr9krjig.bkt.clouddn.com/whj/c.png"></a></div>
+				<!-- <div class="index_tu_img"><a href="{{ url_for('main.get_movie', id=movie.id) }}"><img src="{{ movie.upload_url }}"></a></div> -->
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
 						<div class="index_tu_title_name"><a href="{{ url_for('main.get_movie', id=movie.id) }}">{{ movie.present_name }}</a>
@@ -74,7 +75,8 @@
 		<div class="index_tu_box">
 			{% for photo in photos %}
 			<div class="index_tu_content">
-				<div class="index_tu_img"><a href="{{ url_for('main.get_photo', id=photo.id) }}"><img src="{{ photo.first_photo }}"></a></div>
+				<div class="index_tu_img"><a href="{{ url_for('main.get_photo', id=photo.id) }}"><img src="http://ohr9krjig.bkt.clouddn.com/whj/c.png"></a></div>
+				<!--<div class="index_tu_img"><a href="{{ url_for('main.get_photo', id=photo.id) }}"><img src="{{ photo.first_photo }}"></a></div>-->
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
 						<div class="index_tu_title_name"><a href="{{ url_for('main.get_photo', id=photo.id) }}">{{ photo.present_name }}</a>
@@ -101,7 +103,8 @@
 		<div class="index_tu_box">
 			{% for anime in animes %}
 			<div class="index_tu_content">
-				<div class="index_tu_img"><a href="{{ url_for('main.get_anime', id=anime.id) }}"><img src="{{ anime.upload_url }}"></a></div>
+				<div class="index_tu_img"><a href="{{ url_for('main.get_anime', id=anime.id) }}"><img src="http://ohr9krjig.bkt.clouddn.com/whj/n.png"></a></div>
+				<!--<div class="index_tu_img"><a href="{{ url_for('main.get_anime', id=anime.id) }}"><img src="{{ anime.upload_url }}"></a></div>-->
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
 						<div class="index_tu_title_name"><a href="{{ url_for('main.get_anime', id=anime.id) }}">{{ anime.present_name }}</a>
@@ -128,7 +131,8 @@
 		<div class="index_tu_box">
 			{% for course in courses %}
 			<div class="index_tu_content">
-				<div class="index_tu_img"><a href="{{ url_for('main.get_course', id=course.id) }}"><img src="{{ course.upload_url }}"></a></div>
+				<div class="index_tu_img"><a href="{{ url_for('main.get_course', id=course.id) }}"><img src="http://ohr9krjig.bkt.clouddn.com/whj/u.png"></a></div>
+				<!--<div class="index_tu_img"><a href="{{ url_for('main.get_course', id=course.id) }}"><img src="{{ course.upload_url }}"></a></div>-->
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
 						<div class="index_tu_title_name"><a href="{{ url_for('main.get_course', id=course.id) }}">{{ course.present_name }}</a>
@@ -155,7 +159,8 @@
 		<div class="index_tu_box">
 			{% for startup in startups %}
 			<div class="index_tu_content">
-				<div class="index_tu_img"><a href="{{ url_for('main.get_startup', id=startup.id) }}"><img src="{{ startup.upload_url }}"></a></div>
+				<div class="index_tu_img"><a href="{{ url_for('main.get_startup', id=startup.id) }}"><img src="http://ohr9krjig.bkt.clouddn.com/whj/u.png"></a></div>
+				<!--<div class="index_tu_img"><a href="{{ url_for('main.get_startup', id=startup.id) }}"><img src="{{ startup.upload_url }}"></a></div>-->
 				<div class="index_tu_info_box">
 					<div class="index_tu_info">
 						<div class="index_tu_title_name"><a href="{{ url_for('main.get_startup', id=startup.id) }}">{{ startup.present_name }}</a>

@@ -104,7 +104,7 @@ def upload_file():
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
-                    description=desctiption,
+                    description=description,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
@@ -135,7 +135,7 @@ def upload_file():
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
-                    description=desctiption,
+                    description=description,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
@@ -150,7 +150,7 @@ def upload_file():
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
-                    description=desctiption,
+                    description=description,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
@@ -165,7 +165,7 @@ def upload_file():
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
-                    description=desctiption,
+                    description=description,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
