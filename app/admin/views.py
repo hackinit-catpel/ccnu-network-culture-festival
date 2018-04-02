@@ -60,23 +60,23 @@ admin.add_view(ModelView(Article, db.session))
 from app.models import Startup
 admin.add_view(ModelView(Startup, db.session))
 
-from app.models import W_Startup
-admin.add_view(ModelView(W_Startup, db.session))
-
-from app.models import W_Movie
-admin.add_view(ModelView(W_Movie, db.session))
-
-from app.models import W_Anime
-admin.add_view(ModelView(W_Anime, db.session))
-
-from app.models import W_Course
-admin.add_view(ModelView(W_Course, db.session))
-
-from app.models import W_Photo
-admin.add_view(ModelView(W_Photo, db.session))
-
-from app.models import W_Article
-admin.add_view(ModelView(W_Article, db.session))
-
-from app.models import Notice
-admin.add_view(ModelView(Notice, db.session))
+# from app.models import W_Startup
+# admin.add_view(ModelView(W_Startup, db.session))
+#
+# from app.models import W_Movie
+# admin.add_view(ModelView(W_Movie, db.session))
+#
+# from app.models import W_Anime
+# admin.add_view(ModelView(W_Anime, db.session))
+#
+# from app.models import W_Course
+# admin.add_view(ModelView(W_Course, db.session))
+#
+# from app.models import W_Photo
+# admin.add_view(ModelView(W_Photo, db.session))
+#
+# from app.models import W_Article
+# admin.add_view(ModelView(W_Article, db.session))
+#
+# from app.models import Notice
+# admin.add_view(ModelView(Notice, db.session))

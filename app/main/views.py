@@ -6,7 +6,7 @@ from ..models import W_Movie, W_Article, W_Photo, W_Anime, W_Course, W_Startup
 from app import db, r1, r2, r3, r4, r5, r6
 from flask import render_template, request, redirect, url_for, send_from_directory, flash, session
 from geetest import GeetestLib
-from werkzeug import secure_filename
+# from werkzeug import secure_filename
 import time
 import os
 import random
@@ -84,7 +84,7 @@ def upload_file():
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
             else:
                 UPLOAD_FOLDER = 'no'
-            item = W_Movie(
+            item = Movie(
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
@@ -100,7 +100,7 @@ def upload_file():
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
             else:
                 UPLOAD_FOLDER = 'no'
-            item = W_Article(
+            item = Article(
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
@@ -116,7 +116,7 @@ def upload_file():
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
             else:
                 UPLOAD_FOLDER = 'no'
-            item = W_Photo(
+            item = Photo(
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
@@ -131,7 +131,7 @@ def upload_file():
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
             else:
                 UPLOAD_FOLDER = 'no'
-            item = W_Anime(
+            item = Anime(
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
@@ -146,7 +146,7 @@ def upload_file():
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
             else:
                 UPLOAD_FOLDER = 'no'
-            item = W_Course(
+            item = Course(
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
@@ -161,7 +161,7 @@ def upload_file():
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
             else:
                 UPLOAD_FOLDER = 'no'
-            item = W_Startup(
+            item = Startup(
                     upload_name=filename,
                     present_name=file_name,
                     author_name=author_name,
