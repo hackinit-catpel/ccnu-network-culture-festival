@@ -2,7 +2,7 @@
 from .. import app
 from . import main
 from ..models import Movie, Article, Photo, Anime, Course, Startup, Notice
-from ..models import W_Movie, W_Article, W_Photo, W_Anime, W_Course, W_Startup
+# from ..models import W_Movie, W_Article, W_Photo, W_Anime, W_Course, W_Startup
 from app import db, r1, r2, r3, r4, r5, r6
 from flask import render_template, request, redirect, url_for, send_from_directory, flash, session
 from geetest import GeetestLib
@@ -24,15 +24,15 @@ def allowed_file(filename):
 
 @main.route('/')
 def index():
-    movies = Movie.query.all()
-    courses = Course.query.all()
-    animes = Anime.query.all()
-    photos = Photo.query.all()
-    startups = Startup.query.all()
+    movies = Movie.query.filter_by(is_conform=True).all()
+    courses = Course.query.filter_by(is_conform=True).all()
+    animes = Anime.query.filter_by(is_conform=True).all()
+    photos = Photo.query.filter_by(is_conform=True).all()
+    startups = Startup.query.filter_by(is_conform=True).all()
     for eachPhoto in photos:
         eachPhoto.first_photo = eachPhoto.video_url.split(' ')[0]
-    articles = Article.query.all()
-    notices = Notice.query.all()
+    articles = Article.query.filter_by(is_conform=True).all()
+    notices = Notice.query.filter_by(is_conform=True).all()
     return render_template(
             '/main/index.html',
             movies=movies[:3],
@@ -180,31 +180,31 @@ def upload_file():
 
 @main.route('/notices/')
 def notices():
-    notices = Notice.query.all()
+    notices = Notice.query.filter_by(is_conform=True).all()
     return render_template('/main/notices.html', notices=notices)
 
 
 @main.route('/movies/')
 def movies():
-    movies = Movie.query.all()
+    movies = Movie.query.filter_by(is_conform=True).all()
     return render_template('main/movies.html', movies=movies)
 
 
 @main.route('/animes/')
 def animes():
-    animes = Anime.query.all()
+    animes = Anime.query.filter_by(is_conform=True).all()
     return render_template('main/animes.html', animes=animes)
 
 
 @main.route('/courses/')
 def courses():
-    courses = Course.query.all()
+    courses = Course.query.filter_by(is_conform=True).all()
     return render_template('main/courses.html', courses=courses)
 
 
 @main.route('/photos/')
 def photos():
-    photos = Photo.query.all()
+    photos = Photo.query.filter_by(is_conform=True).all()
     for eachPhoto in photos:
         eachPhoto.first_photo = eachPhoto.upload_url.split(' ')[0]
     return render_template('main/photos.html', photos=photos)
@@ -212,24 +212,24 @@ def photos():
 
 @main.route('/articles/')
 def articles():
-    articles = Article.query.all()
+    articles = Article.query.filter_by(is_conform=True).all()
     return render_template('main/articles.html', articles=articles)
 
 
 @main.route('/startups/')
 def startups():
-    startups = Startup.query.all()
+    startups = Startup.query.filter_by(is_conform=True).all()
     return render_template('main/startups.html', startups=startups)
 
 
 @main.route('/rank/')
 def rank():
-    movies = Movie.query.all()
-    articles = Article.query.all()
-    animes = Anime.query.all()
-    photos = Photo.query.all()
-    courses = Course.query.all()
-    startups = Startup.query.all()
+    movies = Movie.query.filter_by(is_conform=True).all()
+    articles = Article.query.filter_by(is_conform=True).all()
+    animes = Anime.query.filter_by(is_conform=True).all()
+    photos = Photo.query.filter_by(is_conform=True).all()
+    courses = Course.query.filter_by(is_conform=True).all()
+    startups = Startup.query.filter_by(is_conform=True).all()
     sorted_movies = sorted(movies, key=lambda movie: movie.liked_count, reverse=True)
     sorted_animes = sorted(animes, key=lambda anime: anime.liked_count, reverse=True)
     sorted_articles = sorted(articles, key=lambda article: article.liked_count, reverse=True)
@@ -249,7 +249,7 @@ def rank():
 
 @main.route('/movie/<int:id>/', methods=["GET", "POST"])
 def get_movie(id):
-    movie = Movie.query.get_or_404(id)
+    movie = Movie.query.filter_by(is_conform=True).get_or_404(id)
     if 'vote' in session.keys():
         if session['vote'] == 1:
             ip = request.remote_addr
@@ -270,7 +270,7 @@ def get_movie(id):
 
 @main.route('/article/<int:id>/', methods=["GET", "POST"])
 def get_article(id):
-    article = Article.query.get_or_404(id)
+    article = Article.query.filter_by(is_conform=True).get_or_404(id)
     if 'vote' in session.keys():
         if session['vote'] == 1:
             ip = request.remote_addr
@@ -291,7 +291,7 @@ def get_article(id):
 
 @main.route('/anime/<int:id>/', methods=["GET", "POST"])
 def get_anime(id):
-    anime = Anime.query.get_or_404(id)
+    anime = Anime.query.filter_by(is_conform=True).get_or_404(id)
     anime_urls = anime.video_url.split(' ')
 
     # 根据文件后缀判断是图片还是视频
@@ -320,7 +320,7 @@ def get_anime(id):
 
 @main.route('/course/<int:id>/', methods=["GET", "POST"])
 def get_course(id):
-    course = Course.query.get_or_404(id)
+    course = Course.query.filter_by(is_conform=True).get_or_404(id)
     if 'vote' in session.keys():
         if session['vote'] == 1:
             ip = request.remote_addr
@@ -341,7 +341,7 @@ def get_course(id):
 
 @main.route('/photo/<int:id>/', methods=["GET", "POST"])
 def get_photo(id):
-    photo = Photo.query.get_or_404(id)
+    photo = Photo.query.filter_by(is_conform=True).get_or_404(id)
     photo_urls = photo.video_url.split(' ')
     if 'vote' in session.keys():
         if session['vote'] == 1:
@@ -363,7 +363,7 @@ def get_photo(id):
 
 @main.route('/startup/<int:id>/', methods=["GET", "POST"])
 def get_startup(id):
-    startup = Startup.query.get_or_404(id)
+    startup = Startup.query.filter_by(is_conform=True).get_or_404(id)
     if 'vote' in session.keys():
         if session['vote'] == 1:
             ip = request.remote_addr
@@ -384,7 +384,7 @@ def get_startup(id):
 
 @main.route('/notice/<int:id>/')
 def get_notice(id):
-    notice = Notice.query.get_or_404(id)
+    notice = Notice.query.filter_by(is_conform=True).get_or_404(id)
     return render_template('main/notice.html', notice=notice)
 
 
