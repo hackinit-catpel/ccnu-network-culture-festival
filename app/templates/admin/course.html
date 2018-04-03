@@ -1,6 +1,14 @@
 {% extends "admin/custom_base.html" %}
+{% import "admin/_macros.html" as macros %}
 {% block title %}微课管理{% endblock %}
 
 {% block content %}
 <h1>微课管理</h1>
+{% for course in courses %}
+{{course.upload_name}}<br/>
+{% endfor %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination,"admin.course_manage") }}
+</div>
+
 {% endblock %}
