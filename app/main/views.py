@@ -401,6 +401,7 @@ def get_captcha():
     session[gt.GT_STATUS_SESSION_KEY] = status
     session["user_id"] = user_id
     response_str = gt.get_response_str()
+    print(response_str)
     return response_str
 
 

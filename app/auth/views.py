@@ -15,7 +15,7 @@ def login():
         user = User.query.filter_by(username = form.username.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user)
-            return redirect('/admin')
+            return redirect('/admin/')
     return render_template('auth/login.html', form=form)
 
 

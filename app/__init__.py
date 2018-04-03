@@ -56,3 +56,5 @@ app.register_blueprint(main, url_prefix='/main')
 from auth import auth
 app.register_blueprint(auth, url_prefix="/auth")
 
+from admin import admin
+app.register_blueprint(admin,url_prefix="/admin")
