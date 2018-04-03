@@ -83,38 +83,63 @@
 
 
 from . import admin
-from flask import render_template, url_for, redirect, flash
-from app.models import Anime,Article,User,Role,Movie,Course,Notice,Photo,Startup
+from flask_login import current_user,login_required
+from flask import render_template, url_for, redirect, flash,request,current_app
+from app.models import Anime,Article,User,Role,Movie,Course,Notice,Photo,Startup,AnonymousUser
 
 @admin.route('/')
+@login_required
 def index():
-    return render_template("admin/home.html")
+    """home page of the management backend"""
+    return render_template("admin/home.html",current_user=current_user)
 
 @admin.route("/user/")
+@login_required
 def user_manage():
-    return render_template("admin/user.html")
+    """用户管理"""
+    page=request.args.get("page",1,int)
+    pagination=User.query.paginate(page,
+            per_page=current_app.config["RESOURCES_PER_PAGE"],error_out=False)
+    users=pagination.items
+    print users
+    return render_template("admin/user.html",
+                           current_user=current_user,
+                           users=users,pagination=pagination)
 
 
 @admin.route("/movie/")
+@login_required
 def movie_manage():
-    return render_template("admin/movie.html")
+    """微视频作品管理"""
+    return render_template("admin/movie.html",current_user=current_user)
 
 @admin.route("/anime/")
+@login_required
 def anime_manage():
-    return render_template("admin/anime.html")
+    """动漫作品管理"""
+    return render_template("admin/anime.html",current_user=current_user)
 
 @admin.route("/course/")
+@login_required
 def course_manage():
-    return render_template("admin/course.html")
+    """微课作品管理"""
+    return render_template("admin/course.html",current_user=current_user)
 
 @admin.route("/photo/")
+@login_required
 def photo_manage():
-    return render_template("admin/photo.html")
+    """摄影作品管理"""
+    return render_template("admin/photo.html",current_user=current_user)
 
 @admin.route("/article/")
+@login_required
 def article_manage():
-    return render_template("admin/article.html")
+    """网文作品管理"""
+    return render_template("admin/article.html",current_user=current_user)
 
 @admin.route("/startup/")
+@login_required
 def startup_manage():
-    return render_template("admin/startup.html")
+    """网络创新创业作品管理"""
+    return render_template("admin/startup.html",current_user=current_user)
+

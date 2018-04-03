@@ -1,6 +1,13 @@
 {% extends "admin/custom_base.html" %}
-{% block title %}user{% endblock %}
+{% import "admin/_macros.html" as macros %}
+{% block title %}用户管理{% endblock %}
 
 {% block content %}
-<h1>here is user</h1>
+<h1>用户管理</h1>
+{% for user in users %}
+{{user.username}}<br/>
+{% endfor %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination,"admin.user_manage") }}
+</div>
 {% endblock %}

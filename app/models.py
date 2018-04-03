@@ -215,6 +215,7 @@ class Notice(db.Model):
     appendix = db.Column(db.String(164))
     body = db.Column(db.Text)
     a_time = db.Column(db.Text)
+    is_confirm = db.Column(db.Boolean, default=False)  # 添加是否审核的标志位
 
     @staticmethod
     def on_changed_body(target, value, oldbalue, initiator):
