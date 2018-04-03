@@ -426,3 +426,88 @@ def validate_capthca():
     else:
         flash("验证码错误!")
         return redirect(session['refer'])
+
+@main.route('/movie/<int:id>/vote/', methods = ["GET"])
+def vote_movie(id):
+    movie = Movie.query.get_or_404(id)
+    ip = request.remote_addr
+    if r1.get(ip):
+        flash("每天只能投一次票!")
+    else:
+        movie.liked_count += 1
+        db.session.add(movie)
+        db.session.commit()
+        flash("投票成功")
+        r1.set(ip, ip)
+    return redirect(url_for('main.get_movie', id=movie.id))
+
+@main.route('/article/<int:id>/vote/', methods = ["GET"])
+def vote_article(id):
+    article = Article.query.get_or_404(id)
+    ip = request.remote_addr
+    if r2.get(ip):
+        flash("每天只能投一次票!")
+    else:
+        article.liked_count += 1
+        db.session.add(article)
+        db.session.commit()
+        flash("投票成功")
+        r2.set(ip, ip)
+    return redirect(url_for('main.get_article', id=article.id))
+
+@main.route('/anime/<int:id>/vote/', methods = ["GET"])
+def vote_anime(id):
+    anime = Anime.query.get_or_404(id)
+    ip = request.remote_addr
+    if r3.get(ip):
+        flash("每天只能投一次票!")
+    else:
+        anime.liked_count += 1
+        db.session.add(anime)
+        db.session.commit()
+        flash("投票成功")
+        r3.set(ip, ip)
+    return redirect(url_for('main.get_anime', id=anime.id))
+
+@main.route('/course/<int:id>/vote/', methods = ["GET"])
+def vote_course(id):
+    course = Course.query.get_or_404(id)
+    ip = request.remote_addr
+    if r4.get(ip):
+        flash("每天只能投一次票!")
+    else:
+        course.liked_count += 1
+        db.session.add(course)
+        db.session.commit()
+        flash("投票成功")
+        r4.set(ip, ip)
+    return redirect(url_for('main.get_course', id=course.id))
+
+
+@main.route('/photo/<int:id>/vote/', methods = ["GET"])
+def vote_photo(id):
+    photo = Photo.query.get_or_404(id)
+    ip = request.remote_addr
+    if r5.get(ip):
+        flash("每天只能投一次票!")
+    else:
+        photo.liked_count += 1
+        db.session.add(photo)
+        db.session.commit()
+        flash("投票成功")
+        r5.set(ip, ip)
+    return redirect(url_for('main.get_photo', id=photo.id))
+
+@main.route('/startup/<int:id>/vote/', methods = ["GET"])
+def vote_startup(id):
+    startup = Startup.query.get_or_404(id)
+    ip = request.remote_addr
+    if r6.get(ip):
+        flash("每天只能投一次票!")
+    else:
+        startup.liked_count += 1
+        db.session.add(startup)
+        db.session.commit()
+        flash("投票成功")
+        r6.set(ip, ip)
+    return redirect(url_for('main.get_startup', id=startup.id))
