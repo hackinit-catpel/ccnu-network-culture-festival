@@ -164,7 +164,7 @@ def article_manage():
 
 @admin.route("/startup/")
 @login_required
-def startup_manage():
+def startup_manage()：
     """网络创新创业作品管理"""
     page = request.args.get("page", 1, int)
     pagination = Startup.query.paginate(page, error_out=False,
