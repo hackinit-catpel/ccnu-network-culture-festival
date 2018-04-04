@@ -22,6 +22,7 @@
         <th>作者</th>
         <th>赞数</th>
         <th>是否通过审核</th>
+        <th>操作</th>
     </tr>
     </thead>
     <tbody>
@@ -39,6 +40,8 @@
         <td>{{movie.author_name}}</td>
         <td>{{movie.like_count}}</td>
         <td>{{movie.is_confirm}}</td>
+        <td><button type="button" class="btn btn-success">通过</button>
+            <br><br><button type="button" class="btn btn-danger">删除</button></td>
     </tr>
     {% endfor %}
     </tbody>
