@@ -46,12 +46,11 @@
     {% endfor %}
     </tbody>
 </table>
-
-
-
-
-
 <div class="pagination">
     {{ macros.pagination_widget(pagination,"admin.movie_manage") }}
 </div>
+
+{% endblock %}
+{% block script %}
+<script src="/static/js/adminjs/movie_manage.js"></script>
 {% endblock %}

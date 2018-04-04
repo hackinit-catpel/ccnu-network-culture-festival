@@ -56,18 +56,8 @@
 
     <script src="/static/js/jquery.js"></script>
     <script src="/static/plugin/bootstrap/js/bootstrap.min.js"></script>
-    <script>
-      // 当用户点击某一个class之后，去掉所有其他的active
-    // 然后将自己添加上active
-    function checkBox(obj) {
-    // 只有当选中的时候才会去掉其他已经勾选的checkbox，所以这里只判断选中的情况
-    if (!obj.hasClass("active")) {
-         // 先把所有的li item 都设置为不选种
-        $('.item').removeClass("active");
-        // 把自己设置为选中
-        obj.addClass("active");
-    }
-}
-    </script>
+    <!--<script src="/static/js/adminjs/movie_manage.js"></script>-->
+  {% block script %}{% endblock %}
+
   </body>
 </html>
