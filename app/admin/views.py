@@ -84,19 +84,24 @@
 
 from . import admin
 from flask_login import current_user,login_required
-from flask import render_template, url_for, redirect, flash,request,current_app,jsonify
+from flask import render_template, url_for, redirect, flash,request,current_app,jsonify,abort
 from app.models import Anime,Article,User,Role,Movie,Course,Notice,Photo,Startup,AnonymousUser
 from app import db
 @admin.route('/',methods=["GET"])
 @login_required
 def index():
     """home page of the management backend"""
+    if current_user.role_id==3:
+        return abort(403)
     return render_template("admin/home.html",current_user=current_user)
+
 
 @admin.route("/user/",methods=["GET"])
 @login_required
 def user_manage():
     """用户管理"""
+    if current_user.role_id==3:
+        return abort(403)
     page=request.args.get("page",1,int)
     pagination=User.query.paginate(page,error_out=False,
             per_page=current_app.config["RESOURCES_PER_PAGE"])
@@ -112,6 +117,8 @@ def user_manage():
 @login_required
 def movie_manage():
     """微视频作品管理"""
+    if current_user.role_id==3:
+        return abort(403)
     page = request.args.get("page", 1, int)
     pagination = Movie.query.paginate(page,error_out=False,
                 per_page=current_app.config["RESOURCES_PER_PAGE"])
@@ -124,6 +131,8 @@ def movie_manage():
 @login_required
 def anime_manage():
     """动漫作品管理"""
+    if current_user.role_id==3:
+        return abort(403)
     page = request.args.get("page", 1, int)
     pagination = Anime.query.paginate(page, error_out=False,
                 per_page=current_app.config["RESOURCES_PER_PAGE"])
@@ -135,6 +144,8 @@ def anime_manage():
 @login_required
 def course_manage():
     """微课作品管理"""
+    if current_user.role_id==3:
+        return abort(403)
     page = request.args.get("page", 1, int)
     pagination = Course.query.paginate(page, error_out=False,
         per_page=current_app.config["RESOURCES_PER_PAGE"])
@@ -146,6 +157,8 @@ def course_manage():
 @login_required
 def photo_manage():
     """摄影作品管理"""
+    if current_user.role_id==3:
+        return abort(403)
     page = request.args.get("page", 1, int)
     pagination = Photo.query.paginate(page, error_out=False,
                 per_page=current_app.config["RESOURCES_PER_PAGE"])
@@ -157,6 +170,8 @@ def photo_manage():
 @login_required
 def article_manage():
     """网文作品管理"""
+    if current_user.role_id==3:
+        return abort(403)
     page = request.args.get("page", 1, int)
     pagination = Article.query.paginate(page, error_out=False,
                 per_page=current_app.config["RESOURCES_PER_PAGE"])
@@ -168,6 +183,8 @@ def article_manage():
 @login_required
 def startup_manage():
     """网络创新创业作品管理"""
+    if current_user.role_id==3:
+        return abort(403)
     page = request.args.get("page", 1, int)
     pagination = Startup.query.paginate(page, error_out=False,
                 per_page=current_app.config["RESOURCES_PER_PAGE"])

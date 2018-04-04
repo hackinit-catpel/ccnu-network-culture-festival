@@ -21,16 +21,24 @@
         <td>{{user.id}}</td>
         <td>{{user.username}}</td>
         <td>{{user.email}}</td>
-        <td>{{user.role_id}}</td>
+        {% if user.role_id == 1 %}
+        <td>协管员</td>
+        {% else %}
+        {% if user.role_id == 2 %}
+        <td>管理员</td>
+        {% else %}
+        <td>普通用户</td>
+        {% endif %}
+        {% endif %}
         <td><!-- Single button -->
 <div class="btn-group">
   <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     变换角色 <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
-    <li><a href="#">User</a></li>
-    <li><a href="#">Moderator</a></li>
-    <li><a href="#">Administrator</a></li>
+    <li><a href="#" class="User">User</a></li>
+    <li><a href="#" class="Moderator">Moderator</a></li>
+    <li><a href="#" class="Admin">Administrator</a></li>
   </ul>
 </div>&nbsp;&nbsp;<button type="button" class="btn btn-danger">删除该用户</button></td>
     </tr>
@@ -43,4 +51,9 @@
 <div class="pagination">
     {{ macros.pagination_widget(pagination,"admin.user_manage") }}
 </div>
+{% endblock %}
+
+
+{% block script %}
+<script src="/static/js/adminjs/user_manage.js"></script>
 {% endblock %}

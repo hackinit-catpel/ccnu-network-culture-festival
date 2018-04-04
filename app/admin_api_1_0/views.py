@@ -7,6 +7,8 @@ from app.models import Anime,Article,User,Role,Movie,Course,Notice,Photo,Startup
 @admin_api.route("/user/<int:id>/manage/",methods=["DELETE","PATCH"])
 def manage_user(id):
     """user manage api"""
+    print (id)
+    print("jjjjjjjjjjjjjjjjjj")
     user = User.query.filter_by(id=id).first_or_404()
     if request.method=="DELETE":
         """删除具有指定id的用户"""
