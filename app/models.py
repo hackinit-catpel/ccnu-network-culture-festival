@@ -112,7 +112,7 @@ login_manager.anonymous_user = AnonymousUser
 
 class Base(object):
     id = db.Column(db.Integer, primary_key=True)
-    is_conform=db.Column(db.Boolean,default=False) #添加是否审核的标志位
+    is_confirm=db.Column(db.Boolean,default=False) #添加是否审核的标志位
     upload_name = db.Column(db.Text)
     present_name = db.Column(db.Text)
     body = db.Column(db.Text)
@@ -211,12 +211,12 @@ class Notice(db.Model):
     __tablename__ = 'notice'
     tag = 'notice'
     id = db.Column(db.Integer, primary_key=True)
-    is_conform=db.Column(db.Boolean,default=False) #添加是否审核的标志位
+    is_confirm=db.Column(db.Boolean,default=False) #添加是否审核的标志位
     name = db.Column(db.String(164))
     appendix = db.Column(db.String(164))
     body = db.Column(db.Text)
     a_time = db.Column(db.Text)
-    is_confirm = db.Column(db.Boolean, default=False)  # 添加是否审核的标志位
+
 
     @staticmethod
     def on_changed_body(target, value, oldbalue, initiator):
