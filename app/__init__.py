@@ -58,3 +58,6 @@ app.register_blueprint(auth, url_prefix="/auth")
 
 from admin import admin
 app.register_blueprint(admin,url_prefix="/admin")
+
+from admin_api_1_0 import admin_api
+app.register_blueprint(admin_api,url_prefix="/admin/api")

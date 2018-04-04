@@ -22,7 +22,17 @@
         <td>{{user.username}}</td>
         <td>{{user.email}}</td>
         <td>{{user.role_id}}</td>
-        <td><button type="button" class="btn btn-danger">删除该用户</button></td>
+        <td><!-- Single button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    变换角色 <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="#">User</a></li>
+    <li><a href="#">Moderator</a></li>
+    <li><a href="#">Administrator</a></li>
+  </ul>
+</div>&nbsp;&nbsp;<button type="button" class="btn btn-danger">删除该用户</button></td>
     </tr>
     {% endfor %}
     </tbody>

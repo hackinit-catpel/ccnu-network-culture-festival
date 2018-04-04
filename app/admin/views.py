@@ -84,16 +84,16 @@
 
 from . import admin
 from flask_login import current_user,login_required
-from flask import render_template, url_for, redirect, flash,request,current_app
+from flask import render_template, url_for, redirect, flash,request,current_app,jsonify
 from app.models import Anime,Article,User,Role,Movie,Course,Notice,Photo,Startup,AnonymousUser
-
-@admin.route('/')
+from app import db
+@admin.route('/',methods=["GET"])
 @login_required
 def index():
     """home page of the management backend"""
     return render_template("admin/home.html",current_user=current_user)
 
-@admin.route("/user/")
+@admin.route("/user/",methods=["GET"])
 @login_required
 def user_manage():
     """用户管理"""
@@ -104,6 +104,8 @@ def user_manage():
     return render_template("admin/user.html",
                            current_user=current_user,
                            users=users,pagination=pagination)
+
+
 
 
 @admin.route("/movie/")
@@ -172,4 +174,5 @@ def startup_manage():
     startups = pagination.items
     return render_template("admin/startup.html",current_user=current_user,
                            startups=startups,pagination=pagination)
+
 
