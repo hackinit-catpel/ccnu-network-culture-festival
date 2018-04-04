@@ -4,9 +4,30 @@
 
 {% block content %}
 <h1>用户管理</h1>
-{% for user in users %}
-{{user.username}}<br/>
-{% endfor %}
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>用户ID</th>
+        <th>用户名</th>
+        <th>用户邮箱</th>
+        <th>用户角色</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+    <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.role_id}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+
 <div class="pagination">
     {{ macros.pagination_widget(pagination,"admin.user_manage") }}
 </div>
