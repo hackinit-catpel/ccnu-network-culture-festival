@@ -83,38 +83,93 @@
 
 
 from . import admin
-from flask import render_template, url_for, redirect, flash
-from app.models import Anime,Article,User,Role,Movie,Course,Notice,Photo,Startup
+from flask_login import current_user,login_required
+from flask import render_template, url_for, redirect, flash,request,current_app
+from app.models import Anime,Article,User,Role,Movie,Course,Notice,Photo,Startup,AnonymousUser
 
 @admin.route('/')
+@login_required
 def index():
-    return render_template("admin/home.html")
+    """home page of the management backend"""
+    return render_template("admin/home.html",current_user=current_user)
 
 @admin.route("/user/")
+@login_required
 def user_manage():
-    return render_template("admin/user.html")
+    """用户管理"""
+    page=request.args.get("page",1,int)
+    pagination=User.query.paginate(page,error_out=False,
+            per_page=current_app.config["RESOURCES_PER_PAGE"])
+    users=pagination.items
+    return render_template("admin/user.html",
+                           current_user=current_user,
+                           users=users,pagination=pagination)
 
 
 @admin.route("/movie/")
+@login_required
 def movie_manage():
-    return render_template("admin/movie.html")
+    """微视频作品管理"""
+    page = request.args.get("page", 1, int)
+    pagination = Movie.query.paginate(page,error_out=False,
+                per_page=current_app.config["RESOURCES_PER_PAGE"])
+    movies = pagination.items
+    return render_template("admin/movie.html",
+                           current_user=current_user,
+                           movies=movies, pagination=pagination)
 
 @admin.route("/anime/")
+@login_required
 def anime_manage():
-    return render_template("admin/anime.html")
+    """动漫作品管理"""
+    page = request.args.get("page", 1, int)
+    pagination = Anime.query.paginate(page, error_out=False,
+                per_page=current_app.config["RESOURCES_PER_PAGE"])
+    animes = pagination.items
+    return render_template("admin/anime.html",current_user=current_user,
+                           animes=animes, pagination=pagination)
 
 @admin.route("/course/")
+@login_required
 def course_manage():
-    return render_template("admin/course.html")
+    """微课作品管理"""
+    page = request.args.get("page", 1, int)
+    pagination = Course.query.paginate(page, error_out=False,
+        per_page=current_app.config["RESOURCES_PER_PAGE"])
+    courses = pagination.items
+    return render_template("admin/course.html",current_user=current_user,
+                           courses=courses,pagination=pagination)
 
 @admin.route("/photo/")
+@login_required
 def photo_manage():
-    return render_template("admin/photo.html")
+    """摄影作品管理"""
+    page = request.args.get("page", 1, int)
+    pagination = Photo.query.paginate(page, error_out=False,
+                per_page=current_app.config["RESOURCES_PER_PAGE"])
+    photos = pagination.items
+    return render_template("admin/photo.html",current_user=current_user,
+                           photos=photos,pagination=pagination)
 
 @admin.route("/article/")
+@login_required
 def article_manage():
-    return render_template("admin/article.html")
+    """网文作品管理"""
+    page = request.args.get("page", 1, int)
+    pagination = Article.query.paginate(page, error_out=False,
+                per_page=current_app.config["RESOURCES_PER_PAGE"])
+    articles = pagination.items
+    return render_template("admin/article.html",current_user=current_user,
+                           articles=articles,pagination=pagination)
 
 @admin.route("/startup/")
-def startup_manage():
-    return render_template("admin/startup.html")
+@login_required
+def startup_manage()：
+    """网络创新创业作品管理"""
+    page = request.args.get("page", 1, int)
+    pagination = Startup.query.paginate(page, error_out=False,
+                per_page=current_app.config["RESOURCES_PER_PAGE"])
+    startups = pagination.items
+    return render_template("admin/startup.html",current_user=current_user,
+                           startups=startups,pagination=pagination)
+

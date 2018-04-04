@@ -1,6 +1,13 @@
 {% extends "admin/custom_base.html" %}
-{% block title %}movie{% endblock %}
+{% import "admin/_macros.html" as macros %}
+{% block title %}微电影管理{% endblock %}
 
 {% block content %}
-<h1>here is movie</h1>
+<h1>微视频管理</h1>
+{% for movie in movies %}
+{{movie.upload_name}}<br/>
+{% endfor %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination,"admin.movie_manage") }}
+</div>
 {% endblock %}

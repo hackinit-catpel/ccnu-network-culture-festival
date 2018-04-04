@@ -1,6 +1,13 @@
 {% extends "admin/custom_base.html" %}
-{% block title %}anime {% endblock %}
+{% import "admin/_macros.html" as macros %}
+{% block title %}动漫作品管理{% endblock %}
 
 {% block content %}
-<h1>here is anime</h1>
+<h1>动漫作品管理</h1>
+{% for anime in animes %}
+{{anime.upload_name}}<br/>
+{% endfor %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination,"admin.anime_manage") }}
+</div>
 {% endblock %}
