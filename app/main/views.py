@@ -3,8 +3,8 @@ from .. import app
 from . import main
 from ..models import Movie, Article, Photo, Anime, Course, Startup, Notice
 # from ..models import W_Movie, W_Article, W_Photo, W_Anime, W_Course, W_Startup
-from app import db, r1, r2, r3, r4, r5, r6
-from flask import render_template, request, redirect, url_for, send_from_directory, flash, session
+from app import db, r1
+from flask import render_template, request, redirect, url_for, send_from_directory, flash, session, jsonify
 from geetest import GeetestLib
 # from werkzeug import secure_filename
 import time
@@ -430,84 +430,78 @@ def validate_capthca():
 @main.route('/movie/<int:id>/vote/', methods = ["GET"])
 def vote_movie(id):
     movie = Movie.query.filter_by(is_confirm=True,id=id).first_or_404()
-    ip = request.remote_addr
+    ip = "movie" + request.remote_addr
     if r1.get(ip):
-        flash("每天只能投一次票!")
+        return jsonify({}),403
     else:
         movie.liked_count += 1
         db.session.add(movie)
         db.session.commit()
-        flash("投票成功")
         r1.set(ip, ip)
-    return redirect(url_for('main.get_movie', id=movie.id))
+        return jsonify({}),200
 
 @main.route('/article/<int:id>/vote/', methods = ["GET"])
 def vote_article(id):
     article = Article.query.filter_by(is_confirm=True,id=id).first_or_404()
-    ip = request.remote_addr
-    if r2.get(ip):
-        flash("每天只能投一次票!")
+    ip = "article" + request.remote_addr
+    if r1.get(ip):
+        return jsonify({}),403
     else:
         article.liked_count += 1
         db.session.add(article)
         db.session.commit()
-        flash("投票成功")
-        r2.set(ip, ip)
-    return redirect(url_for('main.get_article', id=article.id))
+        r1.set(ip, ip)
+        return jsonify({}),200
 
 @main.route('/anime/<int:id>/vote/', methods = ["GET"])
 def vote_anime(id):
     anime = Anime.query.filter_by(is_confirm=True,id=id).first_or_404()
-    ip = request.remote_addr
-    if r3.get(ip):
-        flash("每天只能投一次票!")
+    ip = "anime" + request.remote_addr
+    if r1.get(ip):
+        return jsonify({}),403
     else:
         anime.liked_count += 1
         db.session.add(anime)
         db.session.commit()
-        flash("投票成功")
-        r3.set(ip, ip)
-    return redirect(url_for('main.get_anime', id=anime.id))
+        r1.set(ip, ip)
+        return jsonify({}),200
 
 @main.route('/course/<int:id>/vote/', methods = ["GET"])
 def vote_course(id):
     course = Course.query.filter_by(is_confirm=True,id=id).first_or_404()
-    ip = request.remote_addr
-    if r4.get(ip):
-        flash("每天只能投一次票!")
+    ip = "course" + request.remote_addr
+    if r1.get(ip):
+        return jsonify({}),403
     else:
         course.liked_count += 1
         db.session.add(course)
         db.session.commit()
-        flash("投票成功")
-        r4.set(ip, ip)
-    return redirect(url_for('main.get_course', id=course.id))
-
+        r1.set(ip, ip)
+        return jsonify({}),200
+        
 
 @main.route('/photo/<int:id>/vote/', methods = ["GET"])
 def vote_photo(id):
     photo = Photo.query.filter_by(is_confirm=True,id=id).first_or_404()
-    ip = request.remote_addr
-    if r5.get(ip):
-        flash("每天只能投一次票!")
+    ip = "photo" + request.remote_addr
+    if r1.get(ip):
+        return jsonify({}), 403
     else:
         photo.liked_count += 1
         db.session.add(photo)
         db.session.commit()
-        flash("投票成功")
-        r5.set(ip, ip)
-    return redirect(url_for('main.get_photo', id=photo.id))
+        r1.set(ip, ip)
+        return jsonify({}), 200
 
 @main.route('/startup/<int:id>/vote/', methods = ["GET"])
 def vote_startup(id):
     startup = Startup.query.filter_by(is_confirm=True,id=id).first_or_404()
-    ip = request.remote_addr
-    if r6.get(ip):
-        flash("每天只能投一次票!")
+    ip = "startup" + request.remote_addr
+    if r1.get(ip):
+        return jsonify({}), 403
     else:
         startup.liked_count += 1
         db.session.add(startup)
         db.session.commit()
-        flash("投票成功")
-        r6.set(ip, ip)
-    return redirect(url_for('main.get_startup', id=startup.id))
+        r1.set(ip, ip)
+        return jsonify({}), 200

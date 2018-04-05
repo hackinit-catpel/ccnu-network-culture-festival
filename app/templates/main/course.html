@@ -37,27 +37,27 @@
 				</div>
 				<script src="http://static.geetest.com/static/tools/gt.js"></script>
 				<script>
-				    var handler = function (captchaObj) {
-				         // 将验证码加到id为captcha的元素里
-				         captchaObj.appendTo("#captcha");
-				     };
-				    $.ajax({
-				        // 获取id，challenge，success（是否启用failback）
-				        url: "/main/getcaptcha",
-				        type: "get",
-				        dataType: "json", // 使用jsonp格式
-				        success: function (data) {
-				            // 使用initGeetest接口
-				            // 参数1：配置参数，与创建Geetest实例时接受的参数一致
-				            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
-				            initGeetest({
-				                gt: data.gt,
-				                challenge: data.challenge,
-				                product: "embed", // 产品形式
-				                offline: !data.success
-				            }, handler);
-				        }
-				    });
+				    // var handler = function (captchaObj) {
+				    //      // 将验证码加到id为captcha的元素里
+				    //      captchaObj.appendTo("#captcha");
+				    //  };
+				    // $.ajax({
+				    //     // 获取id，challenge，success（是否启用failback）
+				    //     url: "/main/getcaptcha",
+				    //     type: "get",
+				    //     dataType: "json", // 使用jsonp格式
+				    //     success: function (data) {
+				    //         // 使用initGeetest接口
+				    //         // 参数1：配置参数，与创建Geetest实例时接受的参数一致
+				    //         // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+				    //         initGeetest({
+				    //             gt: data.gt,
+				    //             challenge: data.challenge,
+				    //             product: "embed", // 产品形式
+				    //             offline: !data.success
+				    //         }, handler);
+				    //     }
+				    // });
 				</script>
 				</div>
 				<div class="c_confirm"><button id="c_confirm_btn">确认</button></div>
@@ -67,9 +67,24 @@
 	{% endblock %}
 	{% block vote_button %}
 	<div class="second_vote">
-		<button class="second_vote_bt" id="vote_btn">投票</button>
+		<button class="second_vote_bt" id="vote_course">投票</button>
 	</div>
-	<script src="../../../static/js/second.js"></script>
+	<!-- <script src="../../../static/js/second.js"></script> -->
+	<script>
+			var course = document.getElementById('vote_course');
+			var id = window.location.pathname.split('/')[3];
+			course.addEventListener("click", function(){
+			fetch("/main/course/" + id + "/vote/", {
+				method: 'GET',
+			}).then(res => {
+				if (res.ok) {
+					alert("投票成功！")
+				} else {
+					alert("每个 IP 仅能投一次！")
+				}
+			})
+		});
+		</script>
 	{% endblock %}
 	{% block flash_message %}
 		{% with messages = get_flashed_messages() %}
