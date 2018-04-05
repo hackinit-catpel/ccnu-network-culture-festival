@@ -8,4 +8,4 @@ admin = Blueprint(
     static_folder = 'static'
 )
 
-from . import views
+from . import views,forms

@@ -4,7 +4,7 @@
 
 {% block content %}
 <h1>用户管理</h1>
-
+<a href="/admin/new-user/" class="pull-right h5" style="color: #2aabd2">创建新用户</a>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -13,7 +13,7 @@
         <th>用户邮箱</th>
         <th>用户角色</th>
         <th>操作</th>
-    </tr>
+    </tr
     </thead>
     <tbody>
     {% for user in users %}

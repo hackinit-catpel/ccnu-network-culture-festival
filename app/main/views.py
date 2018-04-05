@@ -249,7 +249,7 @@ def rank():
 
 @main.route('/movie/<int:id>/', methods=["GET", "POST"])
 def get_movie(id):
-    movie = Movie.query.filter_by(is_confirm=True).get_or_404(id)
+    movie = Movie.query.get_or_404(id)
     if 'vote' in session.keys():
         if session['vote'] == 1:
             ip = request.remote_addr
@@ -270,7 +270,7 @@ def get_movie(id):
 
 @main.route('/article/<int:id>/', methods=["GET", "POST"])
 def get_article(id):
-    article = Article.query.filter_by(is_confirm=True).get_or_404(id)
+    article = Article.query.get_or_404(id)
     if 'vote' in session.keys():
         if session['vote'] == 1:
             ip = request.remote_addr
@@ -291,7 +291,7 @@ def get_article(id):
 
 @main.route('/anime/<int:id>/', methods=["GET", "POST"])
 def get_anime(id):
-    anime = Anime.query.filter_by(is_confirm=True).get_or_404(id)
+    anime = Anime.query.filter_by(is_confirm=True,id=id).first_or_404()
     anime_urls = anime.video_url.split(' ')
 
     # 根据文件后缀判断是图片还是视频
@@ -320,7 +320,7 @@ def get_anime(id):
 
 @main.route('/course/<int:id>/', methods=["GET", "POST"])
 def get_course(id):
-    course = Course.query.filter_by(is_confirm=True).get_or_404(id)
+    course = Course.query.get_or_404(id)
     if 'vote' in session.keys():
         if session['vote'] == 1:
             ip = request.remote_addr
@@ -341,7 +341,7 @@ def get_course(id):
 
 @main.route('/photo/<int:id>/', methods=["GET", "POST"])
 def get_photo(id):
-    photo = Photo.query.filter_by(is_confirm=True).get_or_404(id)
+    photo = Photo.query.get_or_404(id)
     photo_urls = photo.video_url.split(' ')
     if 'vote' in session.keys():
         if session['vote'] == 1:
@@ -363,7 +363,7 @@ def get_photo(id):
 
 @main.route('/startup/<int:id>/', methods=["GET", "POST"])
 def get_startup(id):
-    startup = Startup.query.filter_by(is_confirm=True).get_or_404(id)
+    startup = Startup.query.filter_by(is_confirm=True,id=id).first_or_404()
     if 'vote' in session.keys():
         if session['vote'] == 1:
             ip = request.remote_addr
@@ -384,7 +384,7 @@ def get_startup(id):
 
 @main.route('/notice/<int:id>/')
 def get_notice(id):
-    notice = Notice.query.filter_by(is_confirm=True).get_or_404(id)
+    notice = Notice.query.filter_by(is_confirm=True,id=id).first_or_404()
     return render_template('main/notice.html', notice=notice)
 
 
@@ -429,7 +429,7 @@ def validate_capthca():
 
 @main.route('/movie/<int:id>/vote/', methods = ["GET"])
 def vote_movie(id):
-    movie = Movie.query.get_or_404(id)
+    movie = Movie.query.filter_by(is_confirm=True,id=id).first_or_404()
     ip = request.remote_addr
     if r1.get(ip):
         flash("每天只能投一次票!")
@@ -443,7 +443,7 @@ def vote_movie(id):
 
 @main.route('/article/<int:id>/vote/', methods = ["GET"])
 def vote_article(id):
-    article = Article.query.get_or_404(id)
+    article = Article.query.filter_by(is_confirm=True,id=id).first_or_404()
     ip = request.remote_addr
     if r2.get(ip):
         flash("每天只能投一次票!")
@@ -457,7 +457,7 @@ def vote_article(id):
 
 @main.route('/anime/<int:id>/vote/', methods = ["GET"])
 def vote_anime(id):
-    anime = Anime.query.get_or_404(id)
+    anime = Anime.query.filter_by(is_confirm=True,id=id).first_or_404()
     ip = request.remote_addr
     if r3.get(ip):
         flash("每天只能投一次票!")
@@ -471,7 +471,7 @@ def vote_anime(id):
 
 @main.route('/course/<int:id>/vote/', methods = ["GET"])
 def vote_course(id):
-    course = Course.query.get_or_404(id)
+    course = Course.query.filter_by(is_confirm=True,id=id).first_or_404()
     ip = request.remote_addr
     if r4.get(ip):
         flash("每天只能投一次票!")
@@ -486,7 +486,7 @@ def vote_course(id):
 
 @main.route('/photo/<int:id>/vote/', methods = ["GET"])
 def vote_photo(id):
-    photo = Photo.query.get_or_404(id)
+    photo = Photo.query.filter_by(is_confirm=True,id=id).first_or_404()
     ip = request.remote_addr
     if r5.get(ip):
         flash("每天只能投一次票!")
@@ -500,7 +500,7 @@ def vote_photo(id):
 
 @main.route('/startup/<int:id>/vote/', methods = ["GET"])
 def vote_startup(id):
-    startup = Startup.query.get_or_404(id)
+    startup = Startup.query.filter_by(is_confirm=True,id=id).first_or_404()
     ip = request.remote_addr
     if r6.get(ip):
         flash("每天只能投一次票!")
