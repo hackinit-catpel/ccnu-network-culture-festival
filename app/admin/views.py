@@ -82,12 +82,12 @@
 # admin.add_view(ModelView(Notice, db.session))
 
 
-from . import admin
-from flask_login import current_user, login_required
-from flask import render_template, url_for, redirect, flash, request, current_app, jsonify, abort
-from app.models import Anime, Article, User, Role, Movie, Course, Notice, Photo, Startup, AnonymousUser
 from app import db
+from . import admin
 from app.admin.forms import UserForm
+from flask_login import current_user, login_required
+from flask import render_template, request, current_app, abort
+from app.models import Anime, Article, User, Movie, Course, Photo, Startup
 
 
 @admin.route('/', methods=["GET"])
@@ -216,5 +216,5 @@ def new_user():
             new_user = User(username=username, password=password, email=email, role_id=int(user_kind))
             db.session.add(new_user)
             db.session.commit()
-        print(password, password2, email, user_kind, username)
+            return "OK"
     return render_template("admin/create_user.html", form=form)
