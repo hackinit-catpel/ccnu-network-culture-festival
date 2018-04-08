@@ -32,8 +32,8 @@ class Config:
     SQLALCHEMY_RECORD_QUERIES = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     ALLOWED_EXTENSIONS = ['zip', 'rar']
-    MAX_CONTENT_LENGTH = 5 * 1024 * 1024
-    BUPLOAD_FOLDER = "/home/humbert/ccnu-network-culture-festival/upload"
+    MAX_CONTENT_LENGTH = 30 * 1024 * 1024
+    BUPLOAD_FOLDER = "/home/humbert/code/ccnu-network-culture-festival/upload"
     #BUPLOAD_FOLDER = os.path.join(basedir, "/upload")
     #BUPLOAD_FOLDER = os.environ.get('BUPLOAD_FOLDER')
     REDIS_URL = "redis://:password@localhost:6379/0"

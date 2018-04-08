@@ -44,7 +44,6 @@ def index():
             startups=startups[:3]
             )
 
-
 @main.route('/upload/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
@@ -79,7 +78,7 @@ def upload_file():
             filename = time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()) + ' ' + file_name
 
         if tag == 'movie':
-            UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'movie')
+            UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'movie/')
             if not upload_url:
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
             else:
@@ -96,7 +95,7 @@ def upload_file():
 
         elif tag == 'article':
             if not upload_url:
-                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'article')
+                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'article/')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
             else:
                 UPLOAD_FOLDER = 'no'
@@ -112,7 +111,7 @@ def upload_file():
 
         elif tag == 'photo':
             if not upload_url:
-                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'photo')
+                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'photo/')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
             else:
                 UPLOAD_FOLDER = 'no'
@@ -127,7 +126,7 @@ def upload_file():
                     )
         elif tag == 'anime':
             if not upload_url:
-                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'anime')
+                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'anime/')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
             else:
                 UPLOAD_FOLDER = 'no'
@@ -142,7 +141,7 @@ def upload_file():
                     )
         elif tag == 'course':
             if not upload_url:
-                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'course')
+                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'course/')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
             else:
                 UPLOAD_FOLDER = 'no'
@@ -157,7 +156,7 @@ def upload_file():
                     )
         elif tag == 'startup':
             if not upload_url:
-                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'startup')
+                UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'startup/')
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
             else:
                 UPLOAD_FOLDER = 'no'

@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 import redis
@@ -9,7 +9,8 @@ import redis
 from config import config
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path = '/upload')
+
 """
 config
  -- 'default': DevelopmentConfig
@@ -56,3 +57,28 @@ app.register_blueprint(admin,url_prefix="/admin")
 
 from admin_api_1_0 import admin_api
 app.register_blueprint(admin_api,url_prefix="/admin/api")
+
+
+@app.route(config[config_name].BUPLOAD_FOLDER + '/startup' + '/<path:filename>/', methods = ['GET'])
+def server_static1(filename):
+    return send_from_directory(config[config_name].BUPLOAD_FOLDER + "/startup" , filename, as_attachment=True)
+
+@app.route(config[config_name].BUPLOAD_FOLDER + '/article' + '/<path:filename>/', methods = ['GET'])
+def server_static2(filename):
+    return send_from_directory(config[config_name].BUPLOAD_FOLDER + "/article" , filename, as_attachment=True)
+
+@app.route(config[config_name].BUPLOAD_FOLDER + '/photo' + '/<path:filename>/', methods = ['GET'])
+def server_static3(filename):
+    return send_from_directory(config[config_name].BUPLOAD_FOLDER + "/photo" , filename, as_attachment=True)
+
+@app.route(config[config_name].BUPLOAD_FOLDER + '/movie' + '/<path:filename>/', methods = ['GET'])
+def server_static4(filename):
+    return send_from_directory(config[config_name].BUPLOAD_FOLDER + "/movie" , filename, as_attachment=True)
+
+@app.route(config[config_name].BUPLOAD_FOLDER + '/anime' + '/<path:filename>/', methods = ['GET'])
+def server_static5(filename):
+    return send_from_directory(config[config_name].BUPLOAD_FOLDER + "/anime" , filename, as_attachment=True)
+
+@app.route(config[config_name].BUPLOAD_FOLDER + '/course' + '/<path:filename>/', methods = ['GET'])
+def server_static6(filename):
+    return send_from_directory(config[config_name].BUPLOAD_FOLDER + "/course" , filename, as_attachment=True)
