@@ -8,18 +8,7 @@
 		</div>
 		<p class="second_description">{{ photo.description }}</p>
         <div class="second_content second_media">
-        <div class="banner">
-        	{% for eachPhoto in photo_urls %}
-        	<div class="banner_img">
-        		<img src="{{ eachPhoto }}">
-        	</div>
-        	{% endfor %}
-        	<div class="switch_bt">
-	        	{% for eachPhoto in photo_urls %}
-	        	<div class="dot"></div>
-	        	{% endfor %}
-        	</div>
-        </div>
+						<a href="{{ photo.upload_url }}" class="second_download">点击下载</a>
         </div>
 	    <!-- 多说评论框 start -->
 	    <div class="ds-thread" data-thread-key="p{{ photo.id }}" data-title="{{ photo.present_name }}" data-url="{{ url_for('main.get_photo', id=photo.id) }}"></div>

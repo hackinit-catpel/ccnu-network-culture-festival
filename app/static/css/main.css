@@ -4,7 +4,9 @@
   padding: 0px;
   box-sizing: border-box;
   text-decoration: none; }
-
+a {
+  color: #000;
+}
 body {
   font-family: "Microsoft YaHei", 微软雅黑;
   background-color: #f5f5f5; }
@@ -322,11 +324,11 @@ button {
   margin-bottom: 20px; }
   .rank-movie-rank .rank_content, .rank-text-rank .rank_content, .rank-photo-rank .rank_content, .rank-catoon-rank .rank_content, .rank-course-rank .rank_content {
     width: 150px;
-    height: 30px;
+    /* height: 30px; */
     margin-left: 20px; }
   .rank-movie-rank .rank_content_title, .rank-text-rank .rank_content_title, .rank-photo-rank .rank_content_title, .rank-catoon-rank .rank_content_title, .rank-course-rank .rank_content_title {
     display: inline-block;
-    height: 30px;
+    /* height: 30px; */
     line-height: 30px;
     width: 120px;
     text-overflow: ellipsis;
@@ -583,10 +585,10 @@ button {
   position: relative; }
 
 label {
-  display: inline-block;
+  /* display: inline-block; */
   height: 35px;
   text-align: center;
-  vertical-align: middle;
+  /* vertical-align: middle; */
   line-height: 35px; }
 
 .upload_label {
@@ -647,11 +649,11 @@ label {
   list-style: none; }
 
 .uploadfile {
-  margin-left: -75px;
+  /* margin-left: -75px; */
   width: 150px;
   height: 40px;
-  vertical-align: middle; }
-
+  /* vertical-align: middle; } */
+}
 .upload-addurl {
   display: block;
   margin-left: 150px;
@@ -665,3 +667,16 @@ label {
 
 .choice-margin {
   margin-left: 50px; }
+
+.img_url {
+  height: 400px;
+  width: 400px;
+  margin: 0 auto;
+  display: block;
+  background-image: url("http://p688ihx0v.bkt.clouddn.com/tv.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.click_to_view {
+  text-align: center;
+}

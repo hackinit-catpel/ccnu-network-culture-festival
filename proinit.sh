@@ -9,7 +9,7 @@ sudo git clone https://github.com/GeeTeam/gt-python-sdk.git
 cd gt-python-sdk
 sudo python setup.py install
 cd ..
-sudo python2 -m pip install -r requirements.txt
-python2 manage.py db init
-python2 manage.py db migrate
-python2 manage.py db upgrade
+sudo python -m pip install -r requirements.txt
+python manage.py db init
+python manage.py db migrate
+python manage.py db upgrade
