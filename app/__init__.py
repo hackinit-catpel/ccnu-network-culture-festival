@@ -9,7 +9,7 @@ import redis
 from config import config
 
 
-app = Flask(__name__, static_url_path = '/upload')
+app = Flask(__name__)
 
 """
 config
