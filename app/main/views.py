@@ -64,6 +64,12 @@ def upload_file():
             flash("请填写文件名!")
             return redirect(url_for('main.upload_file'))
 
+        img_url = request.form.get('img_url')
+
+        if not img_url and tag is not 'article':
+            flash("请添加头图链接!")
+            return redirect(url_for('main.upload_file'))
+        
         upload_url = request.form.get('upload_url')
 
         if not upload_url:
@@ -90,6 +96,7 @@ def upload_file():
                     description=description,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
+                    img_url = img_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                     )
 
@@ -106,6 +113,7 @@ def upload_file():
                     description=description,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
+                    img_url = img_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                     )
 
@@ -122,6 +130,7 @@ def upload_file():
                     description=description,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
+                    img_url = img_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                     )
         elif tag == 'anime':
@@ -137,8 +146,10 @@ def upload_file():
                     description=description,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
+                    img_url = img_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                     )
+
         elif tag == 'course':
             if not upload_url:
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'course/')
@@ -152,8 +163,10 @@ def upload_file():
                     description=description,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
+                    img_url = img_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                     )
+
         elif tag == 'startup':
             if not upload_url:
                 UPLOAD_FOLDER = os.path.join(app.config['BUPLOAD_FOLDER'], 'startup/')
@@ -167,6 +180,7 @@ def upload_file():
                     description=description,
                     upload_url=UPLOAD_FOLDER + filename,
                     video_url=upload_url,
+                    img_url = img_url,
                     a_time=(time.strftime("%a %b %d %H:%M:%S %Y",time.localtime()))[:10]
                     )
 
