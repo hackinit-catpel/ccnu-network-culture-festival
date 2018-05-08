@@ -33,10 +33,9 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     ALLOWED_EXTENSIONS = ['zip', 'rar']
     MAX_CONTENT_LENGTH = 30 * 1024 * 1024
-    BUPLOAD_FOLDER = "/home/humbert/code/ccnu-network-culture-festival/upload"
-    #BUPLOAD_FOLDER = os.path.join(basedir, "/upload")
+    BUPLOAD_FOLDER = os.path.join(basedir, "/upload")
     #BUPLOAD_FOLDER = os.environ.get('BUPLOAD_FOLDER')
-    REDIS_URL = "redis://:password@localhost:6379/0"
+    REDIS_URL = "redis://@localhost:6388/3"
     CAPTCHA_ID = "b46d1900d0a894591916ea94ea91bd2c"
     PRIVATE_KEY = "36fc3fe98530eea08dfc6ce76e3d24c4"
     PIC_APPENDIX = ['png', 'jpg', 'jpeg', 'bmp', 'gif']
