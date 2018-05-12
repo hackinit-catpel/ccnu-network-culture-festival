@@ -35,7 +35,7 @@ class Config:
     MAX_CONTENT_LENGTH = 30 * 1024 * 1024
     BUPLOAD_FOLDER = os.path.join(basedir, "/upload")
     #BUPLOAD_FOLDER = os.environ.get('BUPLOAD_FOLDER')
-    REDIS_URL = "redis://@localhost:6388/3"
+    REDIS_URL = "redis://@localhost:6379/4"
     CAPTCHA_ID = "b46d1900d0a894591916ea94ea91bd2c"
     PRIVATE_KEY = "36fc3fe98530eea08dfc6ce76e3d24c4"
     PIC_APPENDIX = ['png', 'jpg', 'jpeg', 'bmp', 'gif']

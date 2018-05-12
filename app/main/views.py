@@ -35,7 +35,7 @@ def index():
     notices = Notice.query.filter_by(is_confirm=True).all()
     return render_template(
             '/main/index.html',
-            movies=movies[:3],
+            movies=movies[:4],
             courses=courses[:3],
             animes=animes[:3],
             photos=photos[:3],
